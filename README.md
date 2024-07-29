@@ -12,11 +12,13 @@ This is a simple project to show dynamic grids on map using leaflet.
 To install the package, use [`npm install dynamic-grids-on-map`]
 
 ## Example Usage
+```
 
 ```javascript
 const L = require('leaflet');
 const DynamicGrid = require('dynamic-grids-on-map');
 ```
+
 ```javascript
 const map = L.map('map').setView([51.505, -0.09], 13);
 ```
