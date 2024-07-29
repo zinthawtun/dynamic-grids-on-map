@@ -16,9 +16,7 @@ To install the package, use [`npm install dynamic-grids-on-map`]
 ```javascript
 const L = require('leaflet');
 const DynamicGrid = require('dynamic-grids-on-map');
-```
 
-```javascript
 const map = L.map('map').setView([51.505, -0.09], 13);
 
 const dynamicGrid = new DynamicGrid({
