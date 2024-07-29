@@ -27,3 +27,4 @@ const dynamicGrid = new DynamicGrid({
 
 dynamicGrid.addTo(map);
 dynamicGrid.addGrid();
+```
