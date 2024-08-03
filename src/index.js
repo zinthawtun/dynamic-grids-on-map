@@ -42,35 +42,37 @@
         }
     
         //This function produce the first grid cells on the map
-        addGrids(map) {
-            this._drawGrids(map.getBounds(), this.options.M_data);
+        //This function produce the first grid cells on the map
+        addGrids() {
+            this._map = this.options.map;
+            this._drawGrids(this.options.map.getBounds(), this.options.M_data);
         }
-    
+
         //events for zoom and pan
         onAdd(map) {
             super.onAdd(map);
             this._map = map;
-            map.on("moveend", this._moveEvent, this);
-            map.on("zoomend", this._zoomEvent, this);
+            // map.on("moveend", this._moveEvent, this);
+            // map.on("zoomend", this._zoomEvent, this);
         }
-    
+
         onRemove(map) {
             super.onRemove(map);
-            map.off("movend", this._moveEvent, this);
-            map.off("zoomend", this._zoomEvent, this);
+            // map.off("movend", this._moveEvent, this);
+            // map.off("zoomend", this._zoomEvent, this);
         }
-    
+
         //every time you move, you have to recreate the grid and glyphs to fit with the map
         _moveEvent(e) {
             this.clearLayers();
             this._drawGrids(e.target.getBounds());
         }
-    
+
         _zoomEvent(e) {
             this.clearLayers();
             this._drawGrids(e.target.getBounds());
         }
-        
+
         //draw the grid and produce the glyphs
         _drawGrids(bounds, markers) {
             this._originalB = this._map.project(bounds.getNorthWest());
@@ -81,7 +83,7 @@
             this._produceGridCells(bounds);
             this._produceGlyphs(bounds, markers);
         }
-    
+
         //this function produce grid cells
         _produceGridCells(bounds) {
             const cells = this._cellBoundary(bounds);
@@ -95,7 +97,7 @@
                 }
             });
         }
-    
+
         //this function produce icons
         _produceGlyphs(bounds) {
             const cells = this._cellBoundary(bounds);
@@ -109,7 +111,7 @@
                 }, this.options.delayRate * i);
             });
         }
-    
+
         //getting the row and column size, map size of x and y coordinates are divided by the grid size
         _setRow_Column() {
             //width is divided by gridsize
@@ -117,7 +119,7 @@
             //height is divided by gridsize
             this._colSize = Math.ceil(this._map.getSize().y / this._gridSize);
         }
-    
+
         _cellBoundary() {
             const cells = [];
             for (let i = 0; i <= this._rowSize; ++i) {
@@ -137,14 +139,14 @@
             }
             return cells;
         }
-    
+
         //to add the grid cells of rows and column by adding coordinate points from the left corner
         _setPoints(row, col) {
             const x = this._originalB.x + (row * this._gridSize);
             const y = this._originalB.y + (col * this._gridSize);
             return new L.Point(x, y);
         }
-    
+
         //this function is to get boundary data of each single grid by edges south west and north east points
         _gridCellArea(row, col) {
             const south_westPoint = this._setPoints(row, col);
@@ -153,7 +155,7 @@
             const n_e = this._map.unproject(north_eastPoint);
             return new L.LatLngBounds(n_e, s_w);
         }
-    
+
         //find the points that include in current map boundary
         _matchBoundPoints(markers) {
             const matchPoints = [];
@@ -164,7 +166,7 @@
             });
             return matchPoints;
         }
-        
+
         //find the points which are in each grid cells
         _matchInCellsPoints(cell, mbPoints) {
             const matchPoints = [];
@@ -174,7 +176,7 @@
             });
             return matchPoints;
         }
-    
+
         //by using MapReduce method, the points in each cell can be counted
         _mapreduceMarkers(cBpoints) {
             const mapReduceArr = [];
@@ -189,7 +191,7 @@
             });
             return mapReduceArr;
         }
-    
+
         //include Icon create Function
         _createIcon(markerInfo) {
             let Icon;
