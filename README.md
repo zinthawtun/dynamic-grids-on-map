@@ -23,6 +23,6 @@ const dynamicGrid = new DynamicGrid({
 });
 
 dynamicGrid.onAdd(map);
-dynamicGrid.addGrid();
+dynamicGrid.addGrids();
 ```
 You can view an example of implementation on Angular here: https://github.com/zinthawtun/dynamic-grids-on-map-angular-example. 
