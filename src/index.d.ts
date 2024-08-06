@@ -33,11 +33,6 @@ declare module 'dynamic-grids-on-map' {
         //inherent method from L.Layer
         onAdd(map: L.Map): this;
         onRemove(map: L.Map): this;
-        produceMyMap(): void;
-        originalGrid(): void;
-        addMyTile(): void;
-        mySVG(): void;
-
 
         //private methods for drawing grids and mapping icons
         private _moveEvent(e: L.LeafletEvent): void;
@@ -55,11 +50,6 @@ declare module 'dynamic-grids-on-map' {
         private _createIcon(markerInfo: any): L.Icon;
     }
 
-    namespace L {
-        function DynamicGridsOnMap(options: DynamicGridsOnMapOptions): DynamicGridsOnMap;
-    }
-
-    export = L.DynamicGridsOnMap;
     export function produceMyMap(option: any): L.Map;
     export function originalGrid(): L.Layer;
     export function addMyTile(option: any): L.TileLayer;
