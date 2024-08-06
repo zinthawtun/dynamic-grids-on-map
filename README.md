@@ -22,6 +22,7 @@ const dynamicGrid = new DynamicGrid({
     customIconFun: yourCustomIconFunction
 });
 
-dynamicGrid.addTo(map);
+dynamicGrid.onAdd(map);
 dynamicGrid.addGrid();
 ```
+You can view an example of implementation on Angular here: https://github.com/zinthawtun/dynamic-grids-on-map-angular-example. 
