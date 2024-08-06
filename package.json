@@ -4,10 +4,11 @@
   "description": "This is a simple project to show dynamic grids on map using leaflet",
   "main": "src/index.js",
   "types": "src/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "files": [
+    "src/"
+  ],
   "dependencies": {
+    "d3": "^7.9.0",
     "leaflet": "^1.7.1"
   },
   "keywords": [

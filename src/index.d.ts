@@ -5,7 +5,8 @@
 
 declare module 'dynamic-grids-on-map' {
     import * as L from 'leaflet';
-
+    import * as d3 from 'd3';
+    
     interface DynamicGridsOnMapOptions extends L.LayerOptions {
         map?: L.Map | null;
         gridSize?: number;
@@ -32,6 +33,11 @@ declare module 'dynamic-grids-on-map' {
         //inherent method from L.Layer
         onAdd(map: L.Map): this;
         onRemove(map: L.Map): this;
+        produceMyMap(): void;
+        originalGrid(): void;
+        addMyTile(): void;
+        mySVG(): void;
+
 
         //private methods for drawing grids and mapping icons
         private _moveEvent(e: L.LeafletEvent): void;
@@ -54,4 +60,14 @@ declare module 'dynamic-grids-on-map' {
     }
 
     export = L.DynamicGridsOnMap;
+    export function produceMyMap(option: any): L.Map;
+    export function originalGrid(): L.Layer;
+    export function addMyTile(option: any): L.TileLayer;
+    export function addSVGLayer(): L.SVG;
+    export function selectSVGLayer(option: any): d3.Selection<SVGSVGElement, any | null, HTMLElement | null, any | null>;
+    export function addCircles(): d3.Selection<SVGSVGElement, any | null, HTMLElement | null, any | null>;
+    export function updateCircles(): any;
+    export function addSimpleClusterMarkers(): L.Marker<any>;
+    export function createPie(): d3.Selection<SVGSVGElement, any | null, HTMLElement | null, any | null>;
+    export function xmlNode(): Document;
 }
