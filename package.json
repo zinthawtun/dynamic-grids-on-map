@@ -1,6 +1,6 @@
 {
   "name": "dynamic-grids-on-map",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This is a simple project to show dynamic grids on map using leaflet",
   "main": "src/index.js",
   "types": "src/index.d.ts",
